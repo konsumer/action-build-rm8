@@ -13,3 +13,6 @@ RUN dpkg --add-architecture armhf && \
 ENV PKG_CONFIG_ALLOW_CROSS="true"
 
 WORKDIR /src
+
+COPY entrypoint.sh /usr/local/entrypoint.sh
+ENTRYPOINT /usr/local/entrypoint.sh

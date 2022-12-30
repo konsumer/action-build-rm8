@@ -1,8 +1,20 @@
-This is an action/docker-container to build [rm8]() easier. It's basically just rust + libsdl2 + libudev for x86_64/arm32/arm64.
+This is an action/docker-container to build [rm8](https://github.com/konsumer/rm8) easier. It's basically just rust + libsdl2 + libudev for x86_64/arm32/arm64 cross-building.
 
 ## usage
 
+Add this to your Cargo.toml:
+
+```toml
+[target.armv7-unknown-linux-gnueabihf]
+linker = "arm-linux-gnueabihf-gcc"
+
+[target.aarch64-unknown-linux-gnu]
+linker = "aarch64-linux-gnu-gcc"
+```
+
 ### github action
+
+> **TODO**: I haven't quite worked this out.
 
 Put this in a yml file in `.github/workflows/` in your repo:
 
@@ -19,10 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Build M8
+        name: Build M8 armv7
         uses: konsumer/action-build-rm8
+        with:
+          arch: armv7
 
 ```
+
+Possible values for `arch` are `armv7`, `aarch64`, and `x86_64`. It defaults to `x86_64`.
 
 ## docker
 
@@ -30,14 +46,14 @@ You can use it on a x86_64 or arm64 host to build x86_64/arm32/arm64.
 
 ```
 # build for linux for current CPU on linux
-docker run -it -v $(pwd):/src konsumer/rm8 cargo build --release
+docker run -it -v $(pwd):/src konsumer/rm8
 
 # cross build for armv7 linux
-docker run -it -v $(pwd):/src -e PKG_CONFIG_PATH="/usr/lib/armv7-unknown-linux-gnueabihf/pkgconfig" konsumer/rm8 cargo build --release --target=armv7-unknown-linux-gnueabihf
+docker run -it -v $(pwd):/src konsumer/rm8 armv7
 
 # cross build for x86_64 linux
-docker run -it -v $(pwd):/src -e PKG_CONFIG_PATH="/usr/lib/x86_64-unknown-linux-gnueabihf/pkgconfig" konsumer/rm8 cargo build --release --target=x86_64-unknown-linux-gnu
+docker run -it -v $(pwd):/src konsumer/rm8 x86_64
 
 # cross build for arm64 linux
-docker run -it -v $(pwd):/src -e PKG_CONFIG_PATH="/usr/lib/aarch64-unknown-linux-gnueabihf/pkgconfig" konsumer/rm8 cargo build --release --target=aarch64-unknown-linux-gnu
+docker run -it -v $(pwd):/src konsumer/rm8 aarch64
 ```

@@ -1,5 +1,12 @@
 name: 'rm8'
 description: 'Build rm8 repo'
+inputs:
+  arch:
+    description: 'The architecture of the build: armv7/aarch64/x86_64'
+    required: true
+    default: 'x86_64'
 runs:
   using: 'docker'
   image: 'konsumer/rm8:latest'
+  args:
+    - ${{ inputs.arch }}
