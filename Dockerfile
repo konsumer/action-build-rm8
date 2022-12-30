@@ -10,4 +10,6 @@ RUN dpkg --add-architecture armhf && \
   rustup target add armv7-unknown-linux-gnueabihf && \
   rustup target add x86_64-unknown-linux-gnu
 
+ENV PKG_CONFIG_ALLOW_CROSS="true"
+
 WORKDIR /src

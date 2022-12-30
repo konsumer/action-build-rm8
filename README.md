@@ -29,9 +29,15 @@ jobs:
 You can use it on a x86_64 or arm64 host to build x86_64/arm32/arm64.
 
 ```
-# build for linux
+# build for linux for current CPU on linux
 docker run -it -v $(pwd):/src konsumer/rm8 cargo build --release
 
 # cross build for armv7 linux
-docker run -it -v $(pwd):/src konsumer/rm8 cargo build --release --target=armv7-unknown-linux-gnueabihf
+docker run -it -v $(pwd):/src -e PKG_CONFIG_PATH="/usr/lib/armv7-unknown-linux-gnueabihf/pkgconfig" konsumer/rm8 cargo build --release --target=armv7-unknown-linux-gnueabihf
+
+# cross build for x86_64 linux
+docker run -it -v $(pwd):/src -e PKG_CONFIG_PATH="/usr/lib/x86_64-unknown-linux-gnueabihf/pkgconfig" konsumer/rm8 cargo build --release --target=x86_64-unknown-linux-gnu
+
+# cross build for arm64 linux
+docker run -it -v $(pwd):/src -e PKG_CONFIG_PATH="/usr/lib/aarch64-unknown-linux-gnueabihf/pkgconfig" konsumer/rm8 cargo build --release --target=aarch64-unknown-linux-gnu
 ```
