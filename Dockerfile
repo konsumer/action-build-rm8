@@ -10,9 +10,8 @@ RUN dpkg --add-architecture armhf && \
   rustup target add armv7-unknown-linux-gnueabihf && \
   rustup target add x86_64-unknown-linux-gnu
 
-ENV PKG_CONFIG_ALLOW_CROSS="true"
-
 WORKDIR /src
 
 COPY entrypoint.sh /usr/local/entrypoint.sh
+RUN chmod 755 /usr/local/entrypoint.sh
 ENTRYPOINT /usr/local/entrypoint.sh

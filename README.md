@@ -42,7 +42,7 @@ Possible values for `arch` are `armv7`, `aarch64`, and `x86_64`. It defaults to 
 
 ## docker
 
-You can use it on a x86_64 or arm64 host to build x86_64/arm32/arm64.
+You can use it on a x86_64 or arm64 host to build linux x86_64/arm32/arm64.
 
 ```
 # build for linux for current CPU on linux
