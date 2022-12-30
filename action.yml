@@ -1,0 +1,5 @@
+name: 'rm8'
+description: 'Build rm8 repo'
+runs:
+  using: 'docker'
+  image: 'konsumer/rm8:latest'
