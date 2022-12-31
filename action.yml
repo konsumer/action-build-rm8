@@ -5,6 +5,10 @@ inputs:
     description: 'The architecture of the build: armv7/aarch64/x86_64'
     required: true
     default: 'x86_64'
+  entrypoint:
+    description: 'The source-file to compile'
+    required: true
+    default: 'src/main.rs'
 runs:
   using: 'docker'
   image: 'docker://konsumer/rm8:latest'

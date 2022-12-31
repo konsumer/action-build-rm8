@@ -35,6 +35,7 @@ jobs:
         uses: konsumer/action-build-rm8@v1
         with:
           arch: armv7
+          entrypoint: src/main.rs
 
 ```
 
@@ -45,15 +46,15 @@ Possible values for `arch` are `armv7`, `aarch64`, and `x86_64`. It defaults to 
 You can use it on a x86_64 or arm64 host to build linux x86_64/arm32/arm64.
 
 ```
-# build for linux for current CPU on linux
+# build src/main.rs for linux for current CPU on linux
 docker run -it -v $(pwd):/src konsumer/rm8
 
-# cross build for armv7 linux
+# cross build src/main.rs for armv7 linux
 docker run -it -v $(pwd):/src konsumer/rm8 armv7
 
-# cross build for x86_64 linux
+# cross build src/main.rs for x86_64 linux
 docker run -it -v $(pwd):/src konsumer/rm8 x86_64
 
-# cross build for arm64 linux
+# cross build src/main.rs for arm64 linux
 docker run -it -v $(pwd):/src konsumer/rm8 aarch64
 ```

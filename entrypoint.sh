@@ -1,6 +1,7 @@
 #!/bin/bash
 
 targetArch="${1}"
+filename="${2:=src/main.rs}"
 arch=$(uname -m)
 
 echo "Running on ${arch}, targeting ${targetArch}"
@@ -12,7 +13,7 @@ if [ "${targetArch}" == "armv7" ];then
     export PKG_CONFIG_ALLOW_CROSS="true"
     export PKG_CONFIG_PATH="/usr/lib/armv7-unknown-linux-gnueabihf/pkgconfig"
   fi
-  options="${options} --target=armv7-unknown-linux-gnueabihf"
+  options="${options} -C linker=armv7-linux-gnueabihf-gcc --target=armv7-unknown-linux-gnueabihf"
 fi
 
 if [ "${targetArch}" == "aarch64" ];then
@@ -20,7 +21,7 @@ if [ "${targetArch}" == "aarch64" ];then
     export PKG_CONFIG_ALLOW_CROSS="true"
     export PKG_CONFIG_PATH="/usr/lib/aarch64-unknown-linux-gnueabihf/pkgconfig"
   fi
-  options="${options} --target=aarch64-unknown-linux-gnu"
+  options="${options} -C linker=aarch64-linux-gnu-gcc --target=aarch64-unknown-linux-gnu"
 fi
 
 if [ "${targetArch}" == "x86_64" ];then
@@ -28,8 +29,7 @@ if [ "${targetArch}" == "x86_64" ];then
     export PKG_CONFIG_ALLOW_CROSS="true"
     export PKG_CONFIG_PATH="/usr/lib/x86_64-unknown-linux-gnu/pkgconfig"
   fi
-  options="${options} --target=x86_64-unknown-linux-gnu"
+  options="${options} -C linker=x86_64-linux-gnu-gcc --target=x86_64-unknown-linux-gnu"
 fi
 
-
-exec cargo build $options
+exec rustc $options "${filename}"
