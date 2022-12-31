@@ -8,8 +8,10 @@ echo "Running on ${arch}, targeting ${targetArch}"
 options="--release"
 
 if [ "${targetArch}" == "armv7" ];then
-  export PKG_CONFIG_ALLOW_CROSS="true"
-  export PKG_CONFIG_PATH="/usr/lib/armv7-unknown-linux-gnueabihf/pkgconfig"
+  if [ "$arch" != 'armv7' ]; then
+    export PKG_CONFIG_ALLOW_CROSS="true"
+    export PKG_CONFIG_PATH="/usr/lib/armv7-unknown-linux-gnueabihf/pkgconfig"
+  fi
   options="${options} --target=armv7-unknown-linux-gnueabihf"
 fi
 
