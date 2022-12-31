@@ -7,6 +7,6 @@ inputs:
     default: 'x86_64'
 runs:
   using: 'docker'
-  image: 'konsumer/rm8:latest'
+  image: 'docker://konsumer/rm8:latest'
   args:
     - ${{ inputs.arch }}
