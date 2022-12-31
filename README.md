@@ -22,7 +22,7 @@ jobs:
     steps:
       -
         name: Build M8 armv7
-        uses: konsumer/action-build-rm8@v1
+        uses: konsumer/action-build-rm8@v2
         with:
           arch: armv7
           entrypoint: src/main.rs
