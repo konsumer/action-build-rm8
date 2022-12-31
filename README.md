@@ -2,16 +2,6 @@ This is an action/docker-container to build [rm8](https://github.com/konsumer/rm
 
 ## usage
 
-Add this to your Cargo.toml:
-
-```toml
-[target.armv7-unknown-linux-gnueabihf]
-linker = "arm-linux-gnueabihf-gcc"
-
-[target.aarch64-unknown-linux-gnu]
-linker = "aarch64-linux-gnu-gcc"
-```
-
 ### github action
 
 > **TODO**: I haven't quite worked this out.
@@ -41,7 +31,7 @@ jobs:
 
 Possible values for `arch` are `armv7`, `aarch64`, and `x86_64`. It defaults to `x86_64`.
 
-## docker
+### docker
 
 You can use it on a x86_64 or arm64 host to build linux x86_64/arm32/arm64.
 
