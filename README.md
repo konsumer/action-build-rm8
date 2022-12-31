@@ -32,7 +32,7 @@ jobs:
     steps:
       -
         name: Build M8 armv7
-        uses: konsumer/action-build-rm8
+        uses: konsumer/action-build-rm8@v1
         with:
           arch: armv7
 
