@@ -1,7 +1,9 @@
 #!/bin/bash
 
 targetArch="${1}"
-arch=$(uname -i)
+arch=$(uname -m)
+
+echo "Running on ${arch}, targeting ${targetArch}"
 
 options="--release"
 

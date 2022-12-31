@@ -14,4 +14,6 @@ WORKDIR /src
 
 COPY entrypoint.sh /usr/local/entrypoint.sh
 RUN chmod 755 /usr/local/entrypoint.sh
-ENTRYPOINT /usr/local/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/entrypoint.sh"]
+CMD ["x86_64"]
