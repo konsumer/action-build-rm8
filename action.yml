@@ -13,4 +13,4 @@ runs:
   using: 'docker'
   image: 'docker://konsumer/rm8:latest'
   args:
-    - ${{ inputs.arch }}
+    - ${{ inputs.arch }} "${{ inputs.entrypoint }}"
