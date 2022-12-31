@@ -42,8 +42,8 @@ docker run -it -v $(pwd):/src konsumer/rm8
 # cross build src/main.rs for armv7 linux
 docker run -it -v $(pwd):/src konsumer/rm8 armv7
 
-# cross build src/main.rs for x86_64 linux
-docker run -it -v $(pwd):/src konsumer/rm8 x86_64
+# cross build src/lib.rs for x86_64 linux
+docker run -it -v $(pwd):/src konsumer/rm8 x86_64 src/lib.rs
 
 # cross build src/main.rs for arm64 linux
 docker run -it -v $(pwd):/src konsumer/rm8 aarch64
