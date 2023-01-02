@@ -11,6 +11,6 @@ inputs:
     default: 'src/main.rs'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://konsumer/rm8:latest'
   args:
     - ${{ inputs.arch }} "${{ inputs.entrypoint }}"
