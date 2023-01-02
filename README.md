@@ -25,7 +25,6 @@ jobs:
         uses: konsumer/action-build-rm8@v2
         with:
           arch: armv7
-          entrypoint: src/main.rs
 
 ```
 
